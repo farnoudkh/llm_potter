@@ -52,7 +52,7 @@ def load_vector_db() -> FAISS:
 
 @st.cache_resource
 def get_client() -> anthropic.Anthropic:
-    return anthropic.Anthropic()
+    return anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 
 def generate_hypothetical_doc(question: str) -> str:
