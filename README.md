@@ -1,3 +1,14 @@
+---
+title: Harry Potter RAG Chatbot
+emoji: ⚡
+colorFrom: red
+colorTo: yellow
+sdk: streamlit
+sdk_version: 1.40.0
+app_file: script.py
+pinned: false
+---
+
 # Harry Potter RAG Chatbot
 
 A conversational Q&A chatbot that answers questions about the Harry Potter book series using **Retrieval-Augmented Generation (RAG)**. The model is strictly grounded — it only uses passages retrieved from the books and never relies on its training memory.
