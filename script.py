@@ -2,7 +2,7 @@ import os
 import streamlit as st
 import anthropic
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -46,8 +46,8 @@ st.markdown("""
 
 @st.cache_resource
 def load_vector_db() -> FAISS:
-    embeddings = HuggingFaceEmbeddings(model_name="paraphrase-multilingual-MiniLM-L12-v2")
-    return FAISS.load_local("harry_potter_hf_index", embeddings, allow_dangerous_deserialization=True)
+    embeddings = HuggingFaceEmbeddings(model_name="all-mpnet-base-v2")
+    return FAISS.load_local("harry_potter_mpnet_index", embeddings, allow_dangerous_deserialization=True)
 
 
 @st.cache_resource
@@ -153,7 +153,7 @@ if prompt := st.chat_input("Your question about Harry Potter..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with st.spinner("🔍 Searching the archives..."):
+    with st.spinner("🔍 Thinking..."):
         history = st.session_state.messages[1:-1]
         response = answer_question(prompt, history)
 
